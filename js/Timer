@@ -1,0 +1,50 @@
+var timer;
+var timeLeft;
+
+// Start the timer
+function startTimer(duration, display) {
+  timeLeft = duration;
+  timer = setInterval(function() {
+    var minutes = parseInt(timeLeft / 60, 10);
+    var seconds = parseInt(timeLeft % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "60" + seconds : seconds;
+
+    display.textContent = minutes + ":" + seconds;
+
+    if (--timeLeft < 0) {
+      clearInterval(timer);
+      // Enable the "Resend" button
+      document.getElementById("resendButton").disabled = false;
+    }
+  }, 1000);
+}
+
+// Set the timer duration and start the timer
+function setTimer() {
+  var duration = 120; // Timer duration in seconds
+  var display = document.getElementById("timer");
+  startTimer(duration, display);
+}
+
+// Resend OTP
+function resendOTP() {
+  // Reset the timer
+  clearInterval(timer);
+  setTimer();
+
+  // Disable the "Resend" button
+  document.getElementById("resendButton").disabled = true;
+
+  // Send the OTP
+  // Your code to send the OTP goes here
+}
+
+// Add an event listener to the "Resend" button
+document.getElementById("resendButton").addEventListener("click", resendOTP);
+
+// Start the timer when the page loads
+window.onload = function() {
+  setTimer();
+};

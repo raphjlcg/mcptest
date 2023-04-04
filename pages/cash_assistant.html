@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Assistant Pre-Filing</title>
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- Cash Assistant CSS -->
+    <link rel="stylesheet" href="../css/assistant_style.css">
+    <!-- Main Image -->
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="navbar_container">
+            <a href="../index.html" id="navbar_logo">
+                <img src="/images/mcp_logo.png">
+            </a>
+            <div class="navbar_toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar_menu">
+                <li class="navbar_item">
+                    <a href="../index.html" class="navbar_links">
+                        Home
+                    </a>
+                </li>
+                <li class="navbar_item">
+                    <a href="cash_assistant.html" class="navbar_links">
+                        Cash Assistant
+                    </a>
+                </li>
+                <li class="navbar_item">
+                    <a href="aboutus.html" class="navbar_links">
+                        About us
+                    </a>
+                </li>
+                <li class="navbar_item">
+                    <a href="/" class="navbar_links">
+                        Contact us
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="recaptcha-container"></div>
+
+    <!-- Cash Assistant Section -->
+    <div class="cash_assistant">
+        <div class="cash_container">
+            <header>Cash Assistant</header>
+            <form action="#">
+                <div class="cash_form first">
+
+                    <div class="cash_details personal">
+                        <span class="cash_title"> Personal Details</span>
+                        <!-- Text Field -->
+                        <div class="cash_field">
+                            <!-- First Name Text Field-->
+                            <div class="cash_input-field">
+                                <label>First Name<span class="mandatory_field">*</span></label>
+                                <input type="text"  id="fName" placeholder="Enter your first name" required>
+                            </div>
+                            <!-- Last Name Text Field -->
+                            <div class="cash_input-field">
+                                <label>Last Name<span class="mandatory_field">*</span></label>
+                                <input type="text"  id="lName" placeholder="Enter your last name" required>
+                            </div>
+                            <!-- Middle Name Text Field -->
+                            <div class="cash_input-field">
+                                <label>Middle Name<span class="mandatory_field">*</span></label>
+                                <input type="text" id="mName" placeholder="Enter your middle name" required>
+                            </div>
+
+                            <!-- Gender Dropdown -->
+                            <div class="cash_input-field">
+                               <label>Gender<span class="mandatory_field">*</span></label>
+                               <select class="cash_select" id="gender" required>
+                                    <option class="cash_option" value="">--- SELECT ---</option>
+                                    <option class="cash_option" value="Male">Male</option>
+                                    <option class="cash_option" value="Female">Female</option>
+                               </select>
+                            </div>
+                            <!-- Birth date Text Field -->
+                            <div class="cash_input-field">
+                                <label>Birth date<span class="mandatory_field">*</span></label>
+                                <input type="date" id="birthDay" placeholder="Enter your occupation" required>
+                            </div>
+                            <!-- Email Text Field -->
+                            <div class="cash_input-field">
+                                <label>Email<span class="mandatory_field">*</span></label>
+                                <input type="email" id="email" placeholder="Enter your email" required>
+                            </div>
+                            <!-- Mobile Number Text Field -->
+                            <div class="cash_input-field">
+                                <label>Mobile Number<span class="mandatory_field">*</span></label>
+                                <input type="text" value="+63" maxlength="13" id="mobile" placeholder="Enter your mobile number" required>
+                              </div>
+                              
+                              <script>
+                                // Function to check if a mobile number is valid for the Philippines
+                                function isPhilippineMobileNumber(mobileNumber) {
+                                  const regex = /^(09|\+639)\d{9}$/; // regular expression for Philippine mobile number
+                                  return regex.test(mobileNumber);
+                                }
+                              
+                                // Get the mobile number input element
+                                const mobileInput = document.getElementById('mobile');
+                              
+                                // Add event listener to the input change event
+                                mobileInput.addEventListener('change', function(event) {
+                                  const mobileNumber = event.target.value;
+                                  if (!isPhilippineMobileNumber(mobileNumber)) {
+                                    alert('Invalid mobile number for the Philippines. Please enter a valid mobile number.');
+                                  }
+                                });
+                              </script>
+
+                              <script>
+                               // Add event listener for form submission
+                                  document.getElementById("myModal").addEventListener("verifyBtnText", function(event) {
+                                  event.preventDefault(); // Prevent form from submitting
+
+                               // Get mobile number entered by the user
+                                  var mobileNumber = document.getElementById("mobile").value;
+
+                                 // Check if the mobile number is already registered
+                                    database.ref("users/" + mobileNumber).once("value").then(function(snapshot) {
+                                    if (snapshot.exists()) {
+                                // Show warning message
+                                   alert("This mobile number is already registered. Please enter a different number.");
+                        } else {
+                                 // Proceed to open the modal box
+                                // Code to open the modal box goes here
+                               }
+                           });
+                         });
+                              </script>
+                              
+                           
+                            <!-- Telephone Number Text Field -->
+                            <div class="cash_input-field">
+                                <label>Telehpone Number<span class="mandatory_field">*</span></label>
+                                <input type="text" id="telephone" placeholder="Enter your telephone number" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Adress Details -->
+                    <div class="cash_details adress">
+                        <span class="cash_title"> Address Details</span>
+                        <div class="cash_field">
+                             <!-- Baranggay Dropdown-->
+                             <div class="cash_input-field">
+                                <label>Baranggay<span class="mandatory_field">*</span></label>
+                                <select class="cash_select" id="barangay" required>
+                                    <option class="cash_option" value="">--- SELECT ---</option>
+                                    <option class="cash_option"value="Apolonio Samson">Apolonio Samson</option>
+                                    <option class="cash_option"value="Baesa">Baesa</option>
+                                    <option class="cash_option"value="Balonbato">Balonbato</option>
+                                    <option class="cash_option"value="Culiat">Culiat</option>
+                                    <option class="cash_option"value="New Era">New Era</option>
+                                    <option class="cash_option"value="Pasong Tamo">Pasong Tamo</option>
+                                    <option class="cash_option"value="Sangandaan">Sangandaan</option>
+                                    <option class="cash_option"value="Sauyo">Sauyo</option>
+                                    <option class="cash_option"value="Talipapa">Talipapa</option>
+                                    <option class="cash_option"value="Tandang Sora">Tandang Sora</option>
+                                    <option class="cash_option"value="Unang Sigaw">Unang Sigaw</option>
+                               </select>
+                                </div>
+
+                            <!-- Street Text Field -->
+                            <div class="cash_input-field">
+                                <label>Street<span class="mandatory_field">*</span></label>
+                                <input type="text" id="street" placeholder="Enter your street" required>
+                            </div>
+                            <!-- House Number Text Field -->
+                            <div class="cash_input-field">
+                                <label>House Number<span class="mandatory_field">*</span></label>
+                                <input type="text" id="house" placeholder="Enter your house number" required>
+                            </div>
+                            
+                        </div>
+                        </div>
+
+                        <!-- File Attachment -->
+                        <div class="cash_upload">
+
+                                <label>File Attachment</label>
+                                <input type="file" id="input-file">
+                                <span class="cash_upload-label"></span>
+
+
+                        </div>
+                        
+                        <div class="container d-flex justify-content-center align-items-center">
+
+                        <div id="recaptcha-container"></div>
+                        <!--  Submit Button -->
+                        <button  class="cash_submitButton" id="mainSubmit">
+                            <span class="btnText">SENT OTP</span>
+                        </button>
+						<div id="myModal" class="modal">
+						  <div class="modal-content">
+						<div class="modal-header">
+                            <div style="text-align: center;">
+							<span class="close">&times;</span>
+						<h2>An OTP has been sent to your number </h2> 
+                        <h2 id ="Mobile"></h2>
+                           </div>
+							 <div class="cash_input-field" style="text-align: center;">
+                             </div>
+                             <div style="text-align: center;">
+                                <style>
+                                    #otp {
+                                        width: 200px;
+                                        height: 40px;
+                                        margin-top: 30px;  /* add 30px of margin to the top */
+                                    }
+                       /* only accept numbers and block latin text */
+                        </style>
+                        <div class="otp-input-container"> 
+                        <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" onkeydown="handleBackspace(this, '')" onkeyup="moveToNext(this)" name="digit1" id="digit1">
+                        <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" onkeydown="handleBackspace(this, 'digit1')" onkeyup="moveToNext(this)" name="digit2" id="digit2">
+                        <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" onkeydown="handleBackspace(this, 'digit2')" onkeyup="moveToNext(this)" name="digit3" id="digit3">
+                        <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" onkeydown="handleBackspace(this, 'digit3')" onkeyup="moveToNext(this)" name="digit4" id="digit4">
+                        <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" onkeydown="handleBackspace(this, 'digit4')" onkeyup="moveToNext(this)" name="digit5" id="digit5">
+                        <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" onkeydown="handleBackspace(this, 'digit5')" name="digit6" id="digit6">
+                        </div>   
+                        
+                        <script>
+                            function handleBackspace(inputElement, previousInputId) {
+                            if (event.keyCode === 8 && inputElement.value.length === 0) {
+                            document.getElementById(previousInputId).focus();
+                            document.getElementById(previousInputId).value = '';
+                        }
+                    }
+
+                         function moveToNext(current) {
+                             if (current.value.length == current.maxLength) {
+                                                var next = current.nextElementSibling;
+                                               if (next == null) {
+                                               next = current.parentElement.nextElementSibling.firstElementChild; }
+        next.focus();
+    }
+}
+
+                                
+                                  
+
+                                 </script>
+                               </div>
+                               <div style="text-align: center;">
+                               <small>
+                               didn't get the otp
+                               <a href="#" class="text-decoration-none" id="resend-link">Resend</a>
+                               <span id="timer" style="display: none;">(60s)</span>
+                              </small>
+                           </div>
+
+                           <script>
+                            function verifyOTP() {
+                              var enteredOTP = '';
+                              var otpBoxes = document.getElementsByClassName('otp-input-container')[0].getElementsByTagName('input');
+                              for (var i = 0; i < otpBoxes.length; i++) {
+                              enteredOTP += otpBoxes[i].value;
+                          }
+                          var firebaseOTPRef = firebase.database().ref('otpCode'); // Replace 'otpCode' with the location of your OTP code in Firebase
+                             var firebaseOTP = ''; // Replace with the code from Firebase
+                             if (enteredOTP === firebaseOTP) {
+                                 alert('OTP verified successfully!');
+                           } else {
+                      alert('OTP verification failed. Please try again!');
+                           }
+                       }
+                            </script>
+
+
+                           <script>
+
+                         
+
+                
+                           
+
+                           // get the "Resend" link element
+                           const resendLink = document.getElementById('resend-link');
+
+                           // get the timer element
+                           const timerElement = document.getElementById('timer');
+
+                           // define a function to update the link text
+                              function updateLinkText(timeLeft) {
+                              resendLink.textContent = `Resend (${timeLeft}s)`;
+                            }
+
+                           // define a function to handle the countdown
+                              function countdown(timeLeft) {
+                              if (timeLeft > 0) {
+                              // decrement the time left
+                              timeLeft--;
+                              // update the link text
+                              updateLinkText(timeLeft);
+                             // call this function again after 1 second
+                             setTimeout(() => countdown(timeLeft), 1000);
+                       } else {
+                             // toggle the class of the link
+                                resendLink.classList.toggle('disabled');
+                               // hide the timer
+                                  timerElement.style.display = 'none';
+                                 // update the link text
+                                  resendLink.textContent = 'Resend';
+                              }
+                           }
+
+                              // add an event listener to the link
+                                 resendLink.addEventListener('click', (event) => {
+                                 // prevent the default behavior (following the link)
+                                    event.preventDefault();
+                                   // toggle the class of the link
+                                      resendLink.classList.toggle('disabled');
+                                      // show the timer
+                                        timerElement.style.display = 'inline';
+                                          // set the initial time left to 60 seconds
+                                           let timeLeft = 60;
+                                              // update the link text
+                                                       updateLinkText(timeLeft);
+                                        // start the countdown
+                                    countdown(timeLeft);
+                                    // show message that new code has been sent
+                                    alert('New 6-digit code has been sent!');
+                                  });
+                       </script>
+                  <div style="text-align: center;">
+                    <span id="timer"></span>
+                  </div>
+                  <div style="text-align: center; margin-top: 10px;">
+                    <img src="https://s2.gifyu.com/images/giphydf1f8b0f1e2077f1.gif" alt="Image description" width="150" height="150"/>
+                  </div>
+                  <div style="text-align: center;">
+                    <button onclick="verifyOTP()" class="cash_submitButton" id="mainSubmit2" style="padding-bottom: 15px; margin-top: 10px;">
+                      <span id="verifyBtnText">CONFIRM OTP</span>
+                    </button>
+                  </div>
+                  
+                            
+                              
+                        </button>
+						</div>
+
+						</div>
+
+						</div>
+                    
+ 
+
+
+                        <!-- <button onclick="OnSubmit()">SEND</button> -->
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+   <!-- Footer Section -->
+   <div class="footer_container">
+        <h4>@Faelman 2023. All rights reserved</h4>
+   </div>
+
+   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
+   <script>
+     // Your web app's Firebase configuration
+     var firebaseConfig = {
+        apiKey: "AIzaSyCJj93BRFrqRAuuXA4TkZIiwd5DnCi5VPg",
+    authDomain: "firetestnine.firebaseapp.com",
+    databaseURL: "https://firetestnine-default-rtdb.firebaseio.com",
+    projectId: "firetestnine",
+    storageBucket: "firetestnine.appspot.com",
+    messagingSenderId: "482828973727",
+    appId: "1:482828973727:web:1d1aeeba2f906a659894aa",
+    measurementId: "G-VHF3LSZGN7"
+     };
+
+     // Initialize Firebase
+     firebase.initializeApp(firebaseConfig);
+   </script>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/drop_down.js"></script>
+    <script src="../js/file_attachment.js"></script>
+
+<script>
+// Get the modal
+	var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+	var btn = document.getElementById("mainSubmit");
+
+// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+
+</body>
+</html>

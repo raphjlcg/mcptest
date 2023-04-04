@@ -1,0 +1,220 @@
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'kumbh Sans', sans-serif;
+ }
+
+ .cash_assistant{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+ }
+
+ .cash_container {
+    position: relative;
+    min-width: 420px;
+    width: 70%;
+    border-radius: 6px;
+    padding: 30px;
+    box-shadow: 20px 30px 25px 20px rgba(0, 0, 0, 0.15);
+    margin: 0 5px 10px rgba(0,0,0,0.1);
+ }
+
+ .cash_container header{
+    position: relative;
+    font-size: 40px;
+    font-weight: 600;
+ }
+
+ .cash_container header::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 3px;
+    width: 277px;
+    border-radius: 8px;
+    background-color: #1766DA;
+ }
+
+ .cash_container form{
+    position: relative;
+    margin-top: 16px;
+    min-height: 490px;
+    background-color: #fff;
+ }
+
+ .cash_container form .cash_details{
+    margin-top: 30px;
+ }
+
+ .cash_container form .cash_details.adress{
+    margin-top: 50px;
+ }
+
+ .cash_container form .cash_title{
+    display: block; 
+    margin-bottom: 18px;
+    font-size: 25px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #333;
+ }
+
+ .cash_container form .cash_field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+ }
+
+ .cash_container form .cash_input-field {
+    display: flex;
+    width: calc(100% / 3 - 15px);
+    flex-direction: column;
+    margin:4px 0;
+ }
+
+ .cash_input-field label{
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+ }
+
+ .cash_input-field label .mandatory_field{ 
+   color: #d51e25;
+   font-weight: bold;
+  
+ }
+
+ .cash_input-field input{
+    outline: none;
+    font-size: 14px;
+    border-radius: 5px;
+    font-weight: 400;
+    border: 1px solid #aaa;
+    color: #333;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+ }
+
+ .cash_input-field input:is(:focus, :valid){
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+ }
+
+ .cash_input-field input[type="date"]{
+    color: #707070;
+ }
+
+ .cash_input-field input[type="date"]:valid{
+    color: #333;
+ }
+
+ /* Submit Button */
+
+ .cash_submitButton{
+    margin-top: 30px;
+    border: none;
+    padding: 10px 20px;
+    background-color: #1766DA;
+    border-radius: 20px;
+    color: #ededeb;
+    font-size: 18px;
+    margin-top: 50px;
+ }
+
+ @media (max-width: 960px) {
+
+    .cash_container form{
+        overflow-y: scroll;
+    }
+
+    .cash_container form::-webkit-scrollbar{
+        display: none;
+    }
+    
+    form .cash_field .cash_input-field{
+        width: calc(100% / 2 - 15px);
+    }
+ }
+
+ @media screen and (max-width: 550px){
+    form .cash_field .cash_input-field{
+        width: 100%;
+    }
+ }
+
+ /* Dropdown Menu CSS   */
+ .cash_select {
+   height: 42px;
+   margin: 8px 0;
+   padding: 10px;
+   margin-top: 10px;
+   border-radius: 5px;
+   background: #fff;
+   box-shadow: 0 0 3px rgba(0,0,0,0.1);
+   border: 1px solid #aaa;
+ }
+
+ .cash_select select {
+   display: none;
+ }
+.cash_option {
+   font-size: 14px;
+   font-weight: 400;
+
+}
+
+/* File Attachment CSS */
+.cash_upload {
+   /* display: inline-flex; */
+   display:grid;
+   align-items: center;
+   font-size: 14px;
+   margin-top: 20px;
+}
+
+.cash_upload-field {
+   display: none;
+}
+
+.cash_upload-button {
+   -webkit-appearance: none;
+   border: none;
+   text-align: left;
+   color:#1766DA ;
+   background: #fff;
+   margin-top: 10px;
+   cursor: pointer;
+}
+
+.cash_upload-button:active {
+   background: #1251ae ;
+   -webkit-background-clip: text;
+   -moz-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   -moz-text-fill-color: transparent;
+}
+
+.cash_upload-label {
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+   color: #aaa;
+   font-size: 14px;
+}
+
+@media (max-width: 960px) {
+   .cash_upload .cash_input-field{
+     width: 100%;
+   }
+}
+
+
+
+
+ 

@@ -1,0 +1,56 @@
+// Replace the placeholder values with your firebase config
+var firebaseConfig = {
+    apiKey: "AIzaSyCJj93BRFrqRAuuXA4TkZIiwd5DnCi5VPg",
+    authDomain: "firetestnine.firebaseapp.com",
+    databaseURL: "https://firetestnine-default-rtdb.firebaseio.com",
+    projectId: "firetestnine",
+    storageBucket: "firetestnine.appspot.com",
+    messagingSenderId: "482828973727",
+    appId: "1:482828973727:web:1d1aeeba2f906a659894aa",
+    measurementId: "G-VHF3LSZGN7"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
+
+// Get a reference to the "CONFIRM OTP" button
+var confirmButton = document.getElementById("mainSubmit2");
+
+// Add an event listener to the button
+confirmButton.addEventListener("click", function() {
+  verifyCode();
+});
+
+
+// Check the 6 digit pin entered from the input box against the firebase code
+function verifyCode() {
+  var code = "";
+  var digit1 = document.getElementById("digit1").value;
+  var digit2 = document.getElementById("digit2").value;
+  var digit3 = document.getElementById("digit3").value;
+  var digit4 = document.getElementById("digit4").value;
+  var digit5 = document.getElementById("digit5").value;
+  var digit6 = document.getElementById("digit6").value;
+  code = digit1 + digit2 + digit3 + digit4 + digit5 + digit6;
+  
+  // Get the verification ID and user-entered code
+  var verificationId = sessionStorage.getItem("firebaseVerificationId");
+  var userCode = code;
+  
+  // Create a credential from the verification ID and user-entered code
+  var credential = firebase.auth.PhoneAuthProvider.credential(verificationId, userCode);
+  
+  // Sign in with the credential
+  firebase.auth().signInWithCredential(credential)
+    .then(function(result) {
+      // The user entered the correct code
+      alert("Code is valid");
+      // Do something if the code is valid
+    })
+    .catch(function(error) {
+      // The user entered the incorrect code
+      alert("Invalid code");
+      // Do something if the code is invalid
+    });
+}

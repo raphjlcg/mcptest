@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test One</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Main Image -->
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="navbar_container">
+            <a href="index.html" id="navbar_logo">
+                <img src="/images/mcp_logo.png">
+            </a>
+            <div class="navbar_toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar_menu">
+                <li class="navbar_item">
+                    <a href="index.html" class="navbar_links">
+                        Home
+                    </a>
+                </li>
+                <li class="navbar_item">
+                    <a href="pages/cash_assistant.html" class="navbar_links">
+                        Cash Assistant
+                    </a>
+                </li>
+                <li class="navbar_item">
+                    <a href="pages/aboutus.html" class="navbar_links">
+                        About us
+                    </a>
+                </li>
+                <li class="navbar_item">
+                    <a href="drop_down.html" class="navbar_links">
+                        Contact us
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+       <!-- Carousel Section -->
+       <div class="carousel_countainer">
+
+        <div class="slide_container">
+            <div class="slides_fade fade">
+                <img src="/images/carousel-image-sample1.png" >
+            </div>
+            <div class="slides_fade fade">
+                <img src="images/carousel-image-sample2.png" >
+            </div>
+            <div class="slides_fade fade">
+                <img src="images/carousel-image-sample3.png" >
+            </div>
+            <a class="carousel_prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="carousel_next" onclick="plusSlides(1)">&#10095;</a>
+               <!-- Carousel Dot -->
+                <div class="dot_manual" style="text-align:center">
+                    <span class="carousel_dot" onclick="currentSlide(1)"></span>
+                    <span class="carousel_dot" onclick="currentSlide(2)"></span>
+                    <span class="carousel_dot" onclick="currentSlide(3)"></span>
+                </div>
+        </div>
+       
+    </div>
+    <!-- Main Section -->
+    <div class="main">
+        <div class="main_container">
+            <div class="main_img-conatiner">
+                <img src="images\mainpic.svg"/>
+            </div>
+            <div class="main_content">
+                <h1>Sample Text Here</h1>
+                <h2>Sample Text Here</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <!-- Services Section -->
+   <div class="services">
+    <h1>Services</h1>
+    <div class="services_container">
+        <div class="services_card"></div>
+        <div class="services_card"></div>
+    </div>
+   </div>
+
+   <!-- Footer Section -->
+   <div class="footer_container">
+        <h4>@Faelman 2023. All rights reserved</h4>
+   </div>
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>

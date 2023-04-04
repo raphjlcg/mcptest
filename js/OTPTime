@@ -1,0 +1,23 @@
+function countdown() {
+    if (timeLeft > 0) {
+      // decrement the time left
+      timeLeft--;
+      // update the link text
+      updateLinkText();
+      // call this function again after 1 second
+      setTimeout(countdown, 1000);
+    } else {
+      // enable the link
+      resendLink.classList.remove('disabled');
+      // update the link text
+      resendLink.textContent = 'Resend';
+      // automatically send a new code
+      sendNewCode();
+    }
+  }
+  
+  function sendNewCode() {
+    // your code for sending a new code here
+    console.log('New code sent!');
+  }
+  
